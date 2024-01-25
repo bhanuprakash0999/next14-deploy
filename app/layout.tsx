@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Amura Health - Web",
+    absolute: "Amura Health - Web Assembler",
     default: "default main",
     template: "route"
   },
