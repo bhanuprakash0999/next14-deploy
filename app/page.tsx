@@ -33,8 +33,7 @@ type ApiResponse = {
   status: number;
   json: () => Promise<CombinedData[]>;
 };
-
-export const getData = async (): Promise<CombinedData[]> => {
+const getData = async (): Promise<CombinedData[]> => {
   // Fetch data from external API
   const res: ApiResponse = await fetch('https://zxoql8krd1.execute-api.ap-south-1.amazonaws.com/Prod/json', { cache: 'no-store' });
 
