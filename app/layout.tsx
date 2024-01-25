@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   description: "Amura can help you get healthy and stay healthy in a way that has not been possible before this. Get Healthy Now",
   openGraph : {
-    images: "https://amura.ai/wp-content/uploads/2022/11/amura-logo.svg"
+    images: "https://amura.ai/wp-content/uploads/2022/11/cropped-revised-favicon-amura-1-192x192.png"
   }
 };
 
