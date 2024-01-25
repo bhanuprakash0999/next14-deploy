@@ -1,19 +1,17 @@
-
 // import Image from "next/image";
 import ParentComponent from "./components/ParentComponent";
 import ScrollToTopButton from "./scroll/ScrollToTopButton";
-import { CombinedData } from './interface';
+import { CombinedData } from "./interface";
 import type { Metadata } from "next";
-
 
 // import RootLayout from "./layout";
 // import RootLayout from "../components/RootLayout";
 
 export const metadata: Metadata = {
   title: "Amura Main Page",
-  description: "Amura can help you get healthy and stay healthy in a way that has not been possible before this. Get Healthy Now",
+  description:
+    "Amura can help you get healthy and stay healthy in a way that has not been possible before this. Get Healthy Now",
 };
-
 
 // export const getData = async () => {
 //   // Fetch data from external API
@@ -35,12 +33,15 @@ type ApiResponse = {
 };
 const getData = async (): Promise<CombinedData[]> => {
   // Fetch data from external API
-  const res: ApiResponse = await fetch('https://zxoql8krd1.execute-api.ap-south-1.amazonaws.com/Prod/json', { cache: 'no-store' });
+  const res: ApiResponse = await fetch(
+    "https://zxoql8krd1.execute-api.ap-south-1.amazonaws.com/Prod/json",
+    { cache: "no-store" }
+  );
 
   // Check if the response is ok
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data');
+    throw new Error("Failed to fetch data");
   }
 
   // Parse JSON and return data
@@ -48,11 +49,10 @@ const getData = async (): Promise<CombinedData[]> => {
   return data;
 };
 
-
 export default async function Home() {
-  const data = await getData()
+  const data = await getData();
   return (
-    <main >
+    <main>
       <ParentComponent data={data} />
       <ScrollToTopButton />
     </main>
