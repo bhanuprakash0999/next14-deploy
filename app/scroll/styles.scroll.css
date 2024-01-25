@@ -1,0 +1,26 @@
+/* styles/ScrollToTopButton.module.css */
+.scrollToTopButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #bbba9d;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.scrollToTopButton:hover {
+  background-color: #9b8a6a;
+}
+
+.scrollToTopButton svg {
+  width: 20px;
+  height: 20px;
+}
