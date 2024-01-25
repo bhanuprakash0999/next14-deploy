@@ -5,6 +5,7 @@ import ScrollToTopButton from "./scroll/ScrollToTopButton";
 import { CombinedData } from './interface';
 import type { Metadata } from "next";
 
+
 // import RootLayout from "./layout";
 // import RootLayout from "../components/RootLayout";
 
@@ -14,20 +15,47 @@ export const metadata: Metadata = {
 };
 
 
-export const getData = async () => {
+// export const getData = async () => {
+//   // Fetch data from external API
+//   const res = await fetch('https://zxoql8krd1.execute-api.ap-south-1.amazonaws.com/Prod/json', { cache: 'no-store' })
+//   const data: CombinedData[] = await res.json()
+//   // Pass data to the page via props
+//   if (!res.ok) {
+//     // This will activate the closest `error.js` Error Boundary
+//     throw new Error('Failed to fetch data')
+//   }
+
+//   return data;
+// }
+
+type ApiResponse = {
+  ok: boolean;
+  status: number;
+  json: () => Promise<CombinedData[]>;
+};
+
+export const getData = async (): Promise<CombinedData[]> => {
   // Fetch data from external API
-  const res = await fetch('https://zxoql8krd1.execute-api.ap-south-1.amazonaws.com/Prod/json', { cache: 'no-store' })
-  const data: CombinedData[] = await res.json()
-  // Pass data to the page via props
+  const res: ApiResponse = await fetch('https://zxoql8krd1.execute-api.ap-south-1.amazonaws.com/Prod/json', { cache: 'no-store' });
+
+  // Check if the response is ok
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data');
+  }
+
+  // Parse JSON and return data
+  const data: CombinedData[] = await res.json();
   return data;
-}
+};
+
 
 export default async function Home() {
-  const data= await getData()
+  const data = await getData()
   return (
     <main >
-        <ParentComponent data={data} />
-        <ScrollToTopButton />
+      <ParentComponent data={data} />
+      <ScrollToTopButton />
     </main>
   );
 }
