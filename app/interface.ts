@@ -7,6 +7,7 @@ interface ComponentData {
 }
 
 export interface InstanceData {
+    filter(arg0: (value: any) => boolean): unknown;
     h1: string;
     h2?: string;
     p: string;

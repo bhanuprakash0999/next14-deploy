@@ -1,23 +1,49 @@
 import React from 'react';
 import ComponentA from '../componentA/ComponentA';
+import { PageData } from '../componentA/ComponentA';
 
 
-const Components: Record<string, React.ComponentType<{ data: any }>> = {
-    foo: ComponentA
+export interface elements{
+    elementType:string, 
+    elementValue: string
+}
+export interface YourComponentProps {
+    data: elements;
+}
+
+const Components: Record<string, React.FC<YourComponentProps>> = {
+    "foo": ComponentA
 };
+function getElementTypeAndName(section: { sectionElements: any[]; sectionName: any; }) {
+    const elementsInfo = section.sectionElements.map((element: { elementType: any; elementValue: any; }) => ({
+        elementType: element.elementType,
+        elementValue: element.elementValue
+    }));
 
-const ParentComponent: React.FC<any> = async(props) => {
+    return { sectionName: section.sectionName, elementsInfo };
+}
+
+const ParentComponent: React.FC<any> = (props:any) => {
+
+
+    // Iterate through each section and get element type and name
+    const sectionInfoArray = props.data.sectionDetails.map(getElementTypeAndName);
+
+    // Output the result
+    console.log(sectionInfoArray[0]);
+    // return
     return (
-        <div >
-            {props.data.content.body.map((item: { _uid: React.Key | null | undefined; component: string | number; instanceData: any; }) => {
-                console.log('Rendering component with _uid:', item._uid);
-                const Component = Components[item.component];
-                return (
-                    <div key={item._uid}>
-                        <Component data={item.instanceData} />
-                    </div>
-                );
-            })}
+        <div>
+            {
+                sectionInfoArray.map((sectionDetails:any)=>{
+                    let ComponentDetails :any = Components[sectionDetails.sectionName];
+                    console.log("ComponentDetails", ComponentDetails)
+                    return(
+                        <ComponentDetails data={sectionDetails.elementsInfo}/>
+                    )
+
+                })
+            }
         </div>
     );
 };
