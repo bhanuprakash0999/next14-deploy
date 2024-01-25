@@ -55,14 +55,6 @@ export default async function Home() {
   const data = await getData();
   return (
     <main>
-      <Head>
-        <title>Amura</title>
-        <meta
-          property="og:description"
-          content="Amura can help you get healthy and stay healthy in a way that has not been possible before this. Get Healthy Now"
-        />
-        <meta property="og:image" content="https://amura.ai/wp-content/uploads/2023/02/external-link-arrow.svg" />
-      </Head>
       <ParentComponent data={data} />
       <ScrollToTopButton />
     </main>
