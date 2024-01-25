@@ -39,7 +39,7 @@ const ParentComponent: React.FC<any> = (props:any) => {
                     let ComponentDetails :any = Components[sectionDetails.sectionName];
                     console.log("ComponentDetails", ComponentDetails)
                     return(
-                        <ComponentDetails data={sectionDetails.elementsInfo}/>
+                        <ComponentDetails key={sectionDetails.sectionId} data={sectionDetails.elementsInfo}/>
                     )
 
                 })
