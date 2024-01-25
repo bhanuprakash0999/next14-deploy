@@ -8,11 +8,12 @@ import Head from "next/head";
 // import RootLayout from "./layout";
 // import RootLayout from "../components/RootLayout";
 
-export const metadata: Metadata = {
-  title: "Amura Main Page",
-  description:
-    "Amura can help you get healthy and stay healthy in a way that has not been possible before this. Get Healthy Now",
-};
+// export const metadata: Metadata = {
+//   title: "Amura Main Page",
+//   description:
+//     "Amura can help you get healthy and stay healthy in a way that has not been possible before this. Get Healthy Now",
+
+// };
 
 // export const getData = async () => {
 //   // Fetch data from external API
